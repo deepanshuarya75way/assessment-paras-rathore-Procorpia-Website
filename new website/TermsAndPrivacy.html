@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service & Privacy Policy – Procorpia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --primary-light: #eff6ff;
+            --secondary: #10b981;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --bg: #f8fafc;
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ---- HEADER ---- */
+        header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 60px 8% 50px;
+            text-align: center;
+        }
+
+        header .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+        }
+
+        header .logo span {
+            color: #60a5fa;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.85;
+        }
+
+        /* ---- NAV TABS ---- */
+        .tab-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 30px 8% 0;
+            background: white;
+            border-bottom: 2px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .tab-btn {
+            padding: 14px 32px;
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-light);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab-btn:hover {
+            color: var(--primary);
+        }
+
+        /* ---- CONTENT ---- */
+        .content {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 50px 5% 80px;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        .last-updated {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .intro {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h3 i {
+            color: var(--primary);
+            font-size: 1rem;
+            background: var(--primary-light);
+            padding: 7px;
+            border-radius: 8px;
+        }
+
+        .section p {
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section ul li {
+            padding: 6px 0 6px 22px;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .section ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        /* ---- CONTACT BOX ---- */
+        .contact-box {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .contact-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .contact-box p {
+            opacity: 0.85;
+            margin-bottom: 16px;
+        }
+
+        .contact-box a {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            font-weight: 700;
+            padding: 10px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .contact-box a:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ---- FOOTER ---- */
+        .page-footer {
+            text-align: center;
+            padding: 24px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .page-footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .tab-btn {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">Procorpia<span>.</span></div>
+        <h1>Legal Documents</h1>
+        <p>Terms of Service & Privacy Policy — Last updated: March 2026</p>
+    </header>
+
+    <!-- TAB NAVIGATION -->
+    <div class="tab-nav">
+        <button class="tab-btn active" onclick="showTab('terms', this)">
+            <i class="fas fa-file-contract"></i> Terms of Service
+        </button>
+        <button class="tab-btn" onclick="showTab('privacy', this)">
+            <i class="fas fa-shield-alt"></i> Privacy Policy
+        </button>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- TERMS OF SERVICE -->
+        <div id="terms" class="tab-panel active">
+            <span class="last-updated"><i class="fas fa-calendar-alt"></i> Effective: March 1, 2026</span>
+            <h2>Terms of Service</h2>
+            <p class="intro">
+                Welcome to Procorpia. By accessing or using our website and services, you agree to be bound by these
+                Terms of Service. Please read them carefully before using our platform.
+            </p>
+
+            <div class="section">
+                <h3><i class="fas fa-handshake"></i> 1. Acceptance of Terms</h3>
+                <p>By accessing our website at <strong>procorpia.com</strong> or using any of our services, you confirm
+                    that you are at least 18 years of age and agree to comply with these terms. If you do not agree,
+                    please discontinue use immediately.</p>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-cogs"></i> 2. Services Provided</h3>
+                <p>Procorpia provides AI-powered BPO solutions including but not limited to:</p>
+                <ul>
+                    <li>Voice and non-voice customer support</li>
+                    <li>Technical support and helpdesk services</li>
+                    <li>Back-office processing and data management</li>
+                    <li>AI-driven automation and analytics</li>
+                    <li>Recruitment and staffing solutions</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-user-check"></i> 3. User Responsibilities</h3>
+                <p>You agree to:</p>
+                <ul>
+                    <li>Provide accurate and truthful information when registering or applying</li>
+                    <li>Not misuse, reverse-engineer, or attempt to hack our systems</li>
+                    <li>Not use our services for any unlawful or fraudulent purpose</li>
+                    <li>Maintain the confidentiality of your account credentials</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-copyright"></i> 4. Intellectual Property</h3>
+                <p>All content on this website — including logos, text, graphics, and software — is the exclusive
+                    property of Procorpia and is protected under applicable intellectual property laws. Unauthorized
+                    reproduction or distribution is strictly prohibited.</p>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-ban"></i> 5. Limitation of Liability</h3>
+                <p>Procorpia shall not be liable for any indirect, incidental, or consequential damages arising from
+                    your use of our services. Our total liability shall not exceed the amount paid by you for the
+                    specific service in question.</p>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-sync-alt"></i> 6. Modifications to Terms</h3>
+                <p>We reserve the right to update these Terms at any time. Continued use of our services after changes
+                    are posted constitutes your acceptance of the revised Terms. We will notify users of significant
+                    changes via email or website notice.</p>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-gavel"></i> 7. Governing Law</h3>
+                <p>These Terms shall be governed by and construed in accordance with the laws of India. Any disputes
+                    shall be subject to the exclusive jurisdiction of the courts located in India.</p>
+            </div>
+
+            <div class="contact-box">
+                <h3>Questions about our Terms?</h3>
+                <p>Our legal team is happy to assist you with any queries.</p>
+                <a href="mailto:legal@procorpia.com"><i class="fas fa-envelope"></i> legal@procorpia.com</a>
+            </div>
+        </div>
+
+        <!-- PRIVACY POLICY -->
+        <div id="privacy" class="tab-panel">
+            <span class="last-updated"><i class="fas fa-calendar-alt"></i> Effective: March 1, 2026</span>
+            <h2>Privacy Policy</h2>
+            <p class="intro">
+                At Procorpia, your privacy is our priority. This Privacy Policy explains how we collect, use, and
+                protect your personal information when you interact with our website and services.
+            </p>
+
+            <div class="section">
+                <h3><i class="fas fa-database"></i> 1. Information We Collect</h3>
+                <p>We may collect the following types of information:</p>
+                <ul>
+                    <li>Personal details: name, email address, phone number</li>
+                    <li>Professional information: resume, work experience, qualifications</li>
+                    <li>Usage data: pages visited, time spent, browser type</li>
+                    <li>Communication records: support tickets, chat logs</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-tasks"></i> 2. How We Use Your Information</h3>
+                <p>Your information is used to:</p>
+                <ul>
+                    <li>Process job applications and recruitment activities</li>
+                    <li>Provide and improve our BPO services</li>
+                    <li>Send service updates, newsletters, and promotional content (with consent)</li>
+                    <li>Comply with legal obligations and prevent fraud</li>
+                    <li>Analyze website performance and user experience</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-share-alt"></i> 3. Data Sharing</h3>
+                <p>We do not sell your personal data. We may share it with:</p>
+                <ul>
+                    <li>Trusted service providers who assist in our operations (under strict confidentiality)</li>
+                    <li>Legal authorities when required by law</li>
+                    <li>Business partners with your explicit consent</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-lock"></i> 4. Data Security</h3>
+                <p>We implement industry-standard security measures including SSL encryption, access controls, and
+                    regular security audits to protect your data from unauthorized access, alteration, or disclosure.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-cookie-bite"></i> 5. Cookies</h3>
+                <p>Our website uses cookies to enhance your browsing experience. You can control cookie settings through
+                    your browser. Disabling cookies may affect certain features of our website.</p>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-user-shield"></i> 6. Your Rights</h3>
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Access the personal data we hold about you</li>
+                    <li>Request correction of inaccurate data</li>
+                    <li>Request deletion of your data (subject to legal obligations)</li>
+                    <li>Withdraw consent for marketing communications at any time</li>
+                    <li>Lodge a complaint with the relevant data protection authority</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-clock"></i> 7. Data Retention</h3>
+                <p>We retain your personal data only as long as necessary for the purposes outlined in this policy or as
+                    required by law. Job application data is retained for up to 2 years unless you request earlier
+                    deletion.</p>
+            </div>
+
+            <div class="contact-box">
+                <h3>Privacy Concerns?</h3>
+                <p>Contact our Data Protection Officer for any privacy-related queries.</p>
+                <a href="mailto:privacy@procorpia.com"><i class="fas fa-envelope"></i> privacy@procorpia.com</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="page-footer">
+        <p>© 2026 Procorpia. All Rights Reserved. &nbsp;|&nbsp; <a href="demo.html">Back to Home</a></p>
+    </div>
+
+    <script>
+        function showTab(tabId, btn) {
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+    </script>
+
+</body>
+
+</html>

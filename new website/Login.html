@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Configures character encoding to support all standard text -->
+    <meta charset="UTF-8">
+    <title>Login | Procorpia Enterprise Solutions</title>
+
+    <!-- Preloads the Inter font family from Google Fonts for typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Loads FontAwesome icon library for global icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Link to the main external stylesheet -->
+    <link rel="stylesheet" href="design.css">
+
+    <!-- Ensures proper rendering and touch zooming on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body class="auth-body">
+
+    <!-- Back to Home Link -->
+    <a href="demo.html" class="back-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+
+    <div class="auth-wrapper">
+        <!-- Left Side: Branding / Info -->
+        <div class="auth-info">
+            <div class="auth-info-content">
+                <div class="logo auth-logo"
+                    style="color: white; font-size: 32px; font-weight: 800; margin-bottom: 2rem;">
+                    Procorpia<span style="color: #60a5fa;">.</span>
+                </div>
+                <h1>Welcome Back!</h1>
+                <p>Log in to access your dashboard, manage your enterprise services, and view real-time performance
+                    analytics.
+                </p>
+
+                <div class="auth-stats">
+                    <div class="auth-stat-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Secure Access</span>
+                    </div>
+                    <div class="auth-stat-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Live Analytics</span>
+                    </div>
+                    <div class="auth-stat-item">
+                        <i class="fas fa-headset"></i>
+                        <span>24/7 Support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: Login Form -->
+        <div class="auth-form-container">
+            <div class="auth-form-box">
+                <h2>Log In</h2>
+                <p class="auth-subtitle">Welcome back! Please enter your details.</p>
+
+                <form id="loginForm">
+                    <div class="input-group-auth">
+                        <label for="email">Email address</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group-auth">
+                        <label for="password">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                        </div>
+                    </div>
+
+                    <div class="auth-options">
+                        <label class="remember-me">
+                            <input type="checkbox">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-link">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block auth-btn">Log In</button>
+                </form>
+
+                <script>
+                    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        const email = document.getElementById('email').value;
+                        const password = document.getElementById('password').value;
+
+                        try {
+                            const response = await fetch('http://127.0.0.1:5000/api/auth/login', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ email, password })
+                            });
+
+                            const data = await response.json();
+
+                            if (response.ok) {
+                                // Store token and user info
+                                localStorage.setItem('token', data.token);
+                                localStorage.setItem('user', JSON.stringify(data.user));
+
+                                alert('Login successful!');
+                                window.location.href = 'demo.html';
+                            } else {
+                                alert(data.msg || 'Login failed');
+                            }
+                        } catch (err) {
+                            console.error('Error:', err);
+                            alert('An error occurred. Please try again later.');
+                        }
+                    });
+                </script>
+
+                <div class="auth-divider">
+                    <span>Or continue with</span>
+                </div>
+
+                <div class="social-login">
+                    <button type="button" class="btn-social">
+                        <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/login/googleFavicon.png"
+                            alt="Google">
+                        Google
+                    </button>
+                    <button type="button" class="btn-social">
+                        <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/login/appleLogo.png"
+                            alt="Apple">
+                        Apple
+                    </button>
+                </div>
+
+                <p class="auth-footer">Don't have an account? <a href="SignUp.html">Sign up for free</a></p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

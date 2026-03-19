@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Configures character encoding to support all standard text -->
+    <meta charset="UTF-8">
+    <title>Procorpia | Enterprise Operations & Strategy</title>
+
+    <!-- Preloads the Inter font family from Google Fonts for typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Loads FontAwesome icon library for global icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Link to the main external stylesheet -->
+    <link rel="stylesheet" href="design.css">
+
+    <!-- Ensures proper rendering and touch zooming on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header id="main-header">
+        <div class="logo"><img src="Images/Procorpia logo.png" alt="Procorpia Logo" class="logo-img"></div>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="Careers.html">Careers</a></li>
+                <li class="nav-auth-container" id="nav-auth"></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section id="home" class="hero">
+        <div class="hero-video-wrapper">
+            <video autoplay muted loop playsinline id="hero-video">
+                <source src="7682761-hd_1920_1080_24fps.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero-content" data-animate="fade-up">
+            <div class="ai-badge"><i class="fas fa-robot"></i> Next-Generation AI Enterprise Solutions</div>
+            <h1>Smarter Business Operations Powered by <span class="highlight">Artificial Intelligence</span></h1>
+            <p>We combine human expertise with cutting-edge AI to deliver faster, smarter, and more cost-effective
+                outsourcing, customer support, and back-office operations worldwide.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary" onclick="openChatFromButton(); return true;">Get Started <i
+                        class="fas fa-arrow-right"></i></a>
+                <a href="#services" class="btn btn-secondary">Explore AI Services</a>
+            </div>
+            <div class="hero-slogan">
+                <span><i class="fas fa-shield-alt"></i> Reliable</span>
+                <span class="slogan-dot">•</span>
+                <span><i class="fas fa-bolt"></i> Responsive</span>
+                <span class="slogan-dot">•</span>
+                <span><i class="fas fa-chart-line"></i> Results</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= STATS SECTION ================= -->
+    <section class="stats" data-animate="fade-up">
+        <div class="stat-container">
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-globe-americas"></i></div>
+                <h3 class="counter" data-target="10">0</h3><span>+</span>
+                <p>Global Clients</p>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <h3 class="counter" data-target="100">0</h3><span>+</span>
+                <p>Employees</p>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-robot"></i></div>
+                <h3 class="counter" data-target="9">0</h3><span>+</span>
+                <p>AI-Powered Services</p>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+                <h3 class="counter" data-target="98">0</h3><span>%</span>
+                <p>AI Accuracy Rate</p>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                <h3 class="counter" data-target="24">0</h3><span>/7</span>
+                <p>AI Support</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= ABOUT SECTION ================= -->
+    <section id="about" class="about">
+        <div class="about-container" data-animate="fade-up">
+            <div class="about-text">
+                <h2 class="section-title">About <span>Procorpia</span></h2>
+                <p>
+                    Procorpia is a next-generation, <strong>AI-driven</strong> operational strategy and managed services
+                    firm. We integrate <strong>Artificial Intelligence</strong> into every service we offer — delivering
+                    faster, more accurate, and more cost-efficient voice, non-voice, and technical support solutions to
+                    international clients.
+                    Our mission is simple: leverage AI to help your business scale smarter.
+                </p>
+                <ul class="about-features">
+                    <li><i class="fas fa-check-circle"></i> AI-Integrated Across All Services</li>
+                    <li><i class="fas fa-check-circle"></i> Cost-effective AI Solutions</li>
+                    <li><i class="fas fa-check-circle"></i> Highly Trained AI-Assisted Professionals</li>
+                    <li><i class="fas fa-check-circle"></i> Cutting-edge AI Technology Stack</li>
+                </ul>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800"
+                    alt="Modern Corporate Team Collaboration">
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SERVICES SECTION ================= -->
+    <!-- ================= AI STRIP BANNER ================= -->
+    <section class="ai-strip">
+        <div class="ai-strip-inner" data-animate="fade-up">
+            <div class="ai-strip-icon"><i class="fas fa-microchip"></i></div>
+            <div class="ai-strip-text">
+                <h3>🤖 AI is at the Core of Everything We Do</h3>
+                <p>From intelligent call routing and AI chatbots to predictive analytics and automated data processing —
+                    Procorpia uses AI to deliver results that traditional BPO simply can't match.</p>
+            </div>
+            <a class="btn btn-primary" onclick="openChatFromButton(); return true;">Get an AI Demo <i
+                    class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- ================= SERVICES SECTION ================= -->
+    <section id="services" class="services dark-bg">
+        <h2 class="section-title center" data-animate="fade-up">Our <span>AI-Powered Services</span></h2>
+        <p class="section-subtitle center" data-animate="fade-up">Every service is enhanced with Artificial Intelligence
+            — delivering speed, accuracy, and unmatched efficiency for your business.</p>
+        <div class="service-container">
+            <div class="card" data-animate="fade-up"
+                style="transition-delay: 0.1s; background-image: url('https://images.unsplash.com/photo-1549923746-c502d488b3ea?q=80&w=800');">
+                <div class="card-bg-overlay"></div>
+                <div class="card-icon"><i class="fas fa-headset"></i></div>
+                <h3>AI Voice Support</h3>
+                <p>AI-powered inbound & outbound calls with smart routing, sentiment analysis, and real-time agent
+                    assist for global audiences.</p>
+            </div>
+            <div class="card" data-animate="fade-up"
+                style="transition-delay: 0.2s; background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800');">
+                <div class="card-bg-overlay"></div>
+                <div class="card-icon"><i class="fas fa-keyboard"></i></div>
+                <h3>AI Non-Voice Process</h3>
+                <p>AI chatbots, automated email replies, and intelligent live chat assistance for seamless back-office
+                    management.</p>
+            </div>
+            <div class="card" data-animate="fade-up"
+                style="transition-delay: 0.3s; background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800');">
+                <div class="card-bg-overlay"></div>
+                <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>AI Technical Support</h3>
+                <p>24/7 AI-assisted IT helpdesk with predictive troubleshooting, auto-ticket resolution, and secure
+                    remote assistance.</p>
+            </div>
+            <div class="card" data-animate="fade-up"
+                style="transition-delay: 0.4s; background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800');">
+                <div class="card-bg-overlay"></div>
+                <div class="card-icon"><i class="fas fa-database"></i></div>
+                <h3>AI Data Processing</h3>
+                <p>AI-driven data extraction, automated data entry, and intelligent document processing with near-zero
+                    error rates.</p>
+            </div>
+            <div class="card" data-animate="fade-up"
+                style="transition-delay: 0.5s; background-image: url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800');">
+                <div class="card-bg-overlay"></div>
+                <div class="card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                <h3>AI Finance & Accounting</h3>
+                <p>AI-automated payroll, smart bookkeeping, fraud detection, and compliant financial reporting at scale.
+                </p>
+            </div>
+            <div class="card" data-animate="fade-up"
+                style="transition-delay: 0.6s; background-image: url('Images/healthcare-call-center-service.jpg');">
+                <div class="card-bg-overlay"></div>
+                <div class="card-icon"><i class="fas fa-notes-medical"></i></div>
+                <h3>AI Healthcare Operations</h3>
+                <p>AI-assisted medical coding, HIPAA-compliant billing automation, and intelligent patient support
+                    services.</p>
+            </div>
+            <div class="card" data-animate="fade-up"
+                style="transition-delay: 0.7s; background-image: url('Images/AI\ HR\ Outsourcing.jpg');">
+                <div class="card-bg-overlay"></div>
+                <div class="card-icon"><i class="fas fa-users-cog"></i></div>
+                <h3>AI HR Outsourcing</h3>
+                <p>AI-powered recruitment screening, automated onboarding, and intelligent talent management solutions.
+                </p>
+            </div>
+            <div class="card" data-animate="fade-up"
+                style="transition-delay: 0.8s; background-image: url('Images/AI\ IT\ Infrastructure.jpg');">
+                <div class="card-bg-overlay"></div>
+                <div class="card-icon"><i class="fas fa-server"></i></div>
+                <h3>AI IT Infrastructure</h3>
+                <p>AI-driven infrastructure monitoring, predictive cloud management, and automated network optimization.
+                </p>
+            </div>
+            <div class="card" data-animate="fade-up"
+                style="transition-delay: 0.9s; background-image: url('Images/AI\ Analytic.jpg');">
+                <div class="card-bg-overlay"></div>
+                <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
+                <h3>AI Research & Analytics</h3>
+                <p>AI-powered market research, business intelligence dashboards, and predictive analytics to accelerate
+                    growth.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PROCESS SECTION ================= -->
+
+
+    <!-- ================= CLIENTS SECTION ================= -->
+    <!-- ================= CLIENTS SECTION ================= -->
+    <section id="clients" class="clients dark-bg">
+        <h2 class="section-title center" data-animate="fade-up">What Our <span>Clients</span> Say</h2>
+
+        <!-- Marquee Row 1 -->
+        <div class="marquee-row">
+            <div class="fade-left"></div>
+            <div class="marquee-inner" id="row1"></div>
+            <div class="fade-right"></div>
+        </div>
+
+        <!-- Marquee Row 2 -->
+        <div class="marquee-row">
+            <div class="fade-left"></div>
+            <div class="marquee-inner marquee-reverse" id="row2"></div>
+            <div class="fade-right"></div>
+        </div>
+    </section>
+
+
+    <!-- ================= CONTACT SECTION ================= -->
+    <section id="contact" class="contact">
+        <div class="contact-container" data-animate="fade-up">
+            <div class="contact-info">
+                <h2 class="section-title">Get In <span>Touch</span></h2>
+                <p>Ready to scale your business with our premium managed enterprise solutions? Contact us today for a
+                    free consultation.</p>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Location</h4>
+                        <p>Tower C8, Sec, 16B Supertech Eco Village 2, Bisrakh, Gautam Buddha Nagar, Uttar Pradesh,
+                            India, 201306</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+91 9045361669 / +91 6396755861</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>info@procorpia.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <div class="input-group">
+                        <input type="text" placeholder="Your Name *" required>
+                        <input type="email" placeholder="Your Email *" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" placeholder="Company Name" required>
+                        <input type="tel" placeholder="Phone Number" required>
+                    </div>
+                    <select class="service-select" required>
+                        <option value="" disabled selected>Select Service You're Interested In *</option>
+                        <option value="AI Voice Support">AI Voice Support</option>
+                        <option value="AI Non-Voice Process">AI Non-Voice Process</option>
+                        <option value="AI Technical Support">AI Technical Support</option>
+                        <option value="AI Data Processing">AI Data Processing</option>
+                        <option value="AI Finance & Accounting">AI Finance & Accounting</option>
+                        <option value="AI Healthcare Operations">AI Healthcare Operations</option>
+                        <option value="AI HR Outsourcing">AI HR Outsourcing</option>
+                        <option value="AI IT Infrastructure">AI IT Infrastructure</option>
+                        <option value="AI Research & Analytics">AI Research & Analytics</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <input type="text" placeholder="Subject">
+                    <textarea placeholder="Tell us about your requirements..." rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary btn-block">Send Message <i
+                            class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="logo"><img src="Images/Procorpia logo.png" alt="Procorpia Logo" class="logo-img"></div>
+                <p class="footer-slogan">Reliable. Responsive. Results.</p>
+                <p>AI-powered enterprise solutions for the modern world.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/company/procorpia-private-limited/"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/procorpia_ai/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://whatsapp.com/channel/0029Vb712TWJpe8pJx1WlK2y"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="Careers.html">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Voice Support</a></li>
+                    <li><a href="#">Non-Voice Process</a></li>
+                    <li><a href="#">Technical Support</a></li>
+                    <li><a href="#">Data Processing</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Newsletter</h4>
+                <p>Subscribe to our newsletter for the latest updates.</p>
+                <div class="newsletter-form" id="newsletter-form-main">
+                    <input type="email" id="newsletter-email-main" placeholder="Your Email Address" required>
+                    <button type="button" onclick="subscribeNewsletter('newsletter-email-main')"><i
+                            class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Procorpia. All Rights Reserved.</p>
+            <div class="footer-legal">
+                <a href="TermsAndPrivacy.html#privacy" target="_blank">Privacy Policy</a>
+                <a href="TermsAndPrivacy.html#terms" target="_blank">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ================= AI CHATBOT FUNCTIONALITY =================
+        // Chatbot responses database
+        const chatbotResponses = {
+            greetings: [
+                "Hello! Welcome to Procorpia. I'm your AI Assistant. How can I help you today?",
+                "Hi there! I'm Procorpia's AI. What would you like to know about our services?",
+                "Welcome! I'm here to help. Ask me anything about Procorpia's AI solutions!"
+            ],
+            services: {
+                keywords: ['service', 'services', 'what do you offer', 'solutions'],
+                response: "Procorpia offers 9 AI-powered services:\n\n📞 AI Voice Support\n💬 AI Non-Voice Process\n🖥️ AI Technical Support\n📊 AI Data Processing\n💰 AI Finance & Accounting\n🏥 AI Healthcare Operations\n👥 AI HR Outsourcing\n🖧 AI IT Infrastructure\n📈 AI Research & Analytics\n\nWhich service interests you most?"
+            },
+            pricing: {
+                keywords: ['price', 'cost', 'pricing', 'how much', 'charges'],
+                response: "Our AI solutions are customized based on your business needs. We offer flexible pricing plans to scale with your growth. Would you like to schedule a consultation to get a personalized quote?"
+            },
+            contact: {
+                keywords: ['contact', 'phone', 'email', 'reach', 'call'],
+                response: "You can reach us at:\n\n📞 +91 9045361669 / +91 6396755861\n📧 info@procorpia.com\n📍 Tower C8, Sec 16B, Supertech Eco Village 2, Bisrakh, Gautam Buddha Nagar, Uttar Pradesh, India - 201306\n\nOr I can help you schedule a demo!"
+            },
+            demo: {
+                keywords: ['demo', 'trial', 'try', 'experience'],
+                response: "Great choice! I can help you experience our AI capabilities right now. Would you like to:\n\n1️⃣ Chat with me to learn more\n2️⃣ Schedule a live demo with our team\n3️⃣ Get a free consultation\n\nJust let me know!"
+            },
+            about: {
+                keywords: ['about', 'company', 'who', 'what is'],
+                response: "Procorpia is a next-generation AI-driven operational strategy firm. We combine human expertise with cutting-edge AI to deliver faster, smarter, and more cost-effective outsourcing solutions worldwide.\n\nOur mission: Leverage AI to help your business scale smarter!"
+            },
+            benefits: {
+                keywords: ['benefit', 'why', 'advantage', 'why choose'],
+                response: "Why choose Procorpia?\n\n✅ 98% AI Accuracy Rate\n✅ 24/7 AI Support\n✅ Cost-effective solutions\n✅ 10+ Global Clients\n✅ 100+ Trained Professionals\n✅ 9 AI-Powered Services\n\nReady to transform your business?"
+            },
+            default: [
+                "That's interesting! Tell me more about what you're looking for.",
+                "I see. Could you tell me more about your business needs?",
+                "I'd be happy to help! Could you clarify what you'd like to know?",
+                "Let me connect you with the right information. What specific service are you interested in?"
+            ],
+            leadCapture: {
+                keywords: ['yes', 'interested', 'schedule', 'book', 'get started', 'sign up'],
+                response: "Excellent! To schedule your personalized demo, please share:\n\n1. Your Name\n2. Email Address\n3. Phone Number\n4. Company Name\n\nOur team will contact you within 24 hours!"
+            },
+            thanks: {
+                keywords: ['thank', 'thanks', 'helpful', 'great'],
+                response: "You're welcome! I'm here to help. Feel free to ask more questions or click 'Schedule Demo' to speak with our team directly!"
+            }
+        };
+
+        // Get chatbot response based on user input
+        function getBotResponse(userMessage) {
+            const message = userMessage.toLowerCase();
+
+            // Check each category
+            for (const [key, data] of Object.entries(chatbotResponses)) {
+                if (key === 'greetings' || key === 'default') continue;
+
+                if (data.keywords) {
+                    for (const keyword of data.keywords) {
+                        if (message.includes(keyword)) {
+                            return data.response;
+                        }
+                    }
+                }
+            }
+
+            // Return random default response
+            return chatbotResponses.default[Math.floor(Math.random() * chatbotResponses.default.length)];
+        }
+
+        // Add message to chat
+        function addMessage(message, isUser) {
+            const chatMessages = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${isUser ? 'user' : 'bot'}`;
+
+            const avatar = isUser ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>';
+            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            messageDiv.innerHTML = `
+                <div class="message-avatar">${avatar}</div>
+                <div class="message-content">
+                    <div class="message-text">${message}</div>
+                    <div class="message-time">${time}</div>
+                </div>
+            `;
+
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Handle user message
+        function handleUserMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+
+            if (message) {
+                addMessage(message, true);
+                input.value = '';
+
+                // Simulate AI thinking delay
+                setTimeout(() => {
+                    const response = getBotResponse(message);
+                    addMessage(response, false);
+                }, 500 + Math.random() * 1000);
+            }
+        }
+
+        // Toggle chat window
+        function toggleChat() {
+            const chatWindow = document.getElementById('chat-window');
+            const chatToggle = document.getElementById('chat-toggle');
+
+            if (chatWindow.classList.contains('active')) {
+                chatWindow.classList.remove('active');
+                chatToggle.classList.remove('active');
+            } else {
+                chatWindow.classList.add('active');
+                chatToggle.classList.add('active');
+                document.getElementById('chat-input').focus();
+            }
+        }
+
+        // Initialize chat with greeting
+        function initChat() {
+            setTimeout(() => {
+                const greeting = chatbotResponses.greetings[Math.floor(Math.random() * chatbotResponses.greetings.length)];
+                addMessage(greeting, false);
+            }, 1000);
+        }
+
+        // Open chat from button click
+        function openChatFromButton() {
+            const chatWindow = document.getElementById('chat-window');
+            const chatToggle = document.getElementById('chat-toggle');
+
+            if (!chatWindow.classList.contains('active')) {
+                chatWindow.classList.add('active');
+                chatToggle.classList.add('active');
+
+                // If no messages, initialize with greeting
+                const chatMessages = document.getElementById('chat-messages');
+                if (chatMessages.children.length === 0) {
+                    initChat();
+                }
+
+                document.getElementById('chat-input').focus();
+            }
+        }
+
+        // Close chat
+        function closeChat() {
+            document.getElementById('chat-window').classList.remove('active');
+            document.getElementById('chat-toggle').classList.remove('active');
+        }
+
+        // Enter key handler
+        document.getElementById('chat-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                handleUserMessage();
+            }
+        });
+
+        // Make openChatFromButton available globally
+        window.openChatFromButton = openChatFromButton;
+    </script>
+    <script>
+        // Array of client testimonial data objects
+        const cardsData = [
+            {
+                image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=200',
+                name: 'Rajesh Sharma',
+                handle: 'CEO, TechNova India',
+                date: 'April 2025',
+                review: 'Procorpia transformed our customer support completely. Their AI-powered solutions reduced our response time by 60% and our clients are extremely satisfied.'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=200',
+                name: 'Priya Mehta',
+                handle: 'Director, FinServe Mumbai',
+                date: 'May 2025',
+                review: 'We partnered with Procorpia for our back-office operations and the results have been outstanding. Their team is professional, responsive, and highly skilled.'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200',
+                name: 'Arjun Patel',
+                handle: 'Founder, StartupHub Ahmedabad',
+                date: 'June 2025',
+                review: 'As a growing startup, we needed scalable support solutions. Procorpia delivered exactly that — cost-effective, reliable, and always available 24/7.'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200',
+                name: 'Sneha Iyer',
+                handle: 'Operations Manager, RetailKart Bangalore',
+                date: 'July 2025',
+                review: 'Procorpia\'s non-voice support team handles our order queries flawlessly. Customer satisfaction scores have gone up by 40% since we onboarded them.'
+            },
+        ];
+
+        // Container elements for the scrolling marquees
+        const row1 = document.getElementById('row1');
+        const row2 = document.getElementById('row2');
+
+        // Function to generate the HTML string for a single client card
+        const createCard = (card) => `
+    <div class="client-card">
+        <div class="client-header">
+            <img src="${card.image}" alt="Client">
+            <div>
+                <div class="client-name">${card.name}</div>
+                <div class="client-handle">${card.handle}</div>
+            </div>
+        </div>
+        <div class="client-text">
+            "${card.review}"
+        </div>
+        <div class="client-date">${card.date}</div>
+    </div>
+    `;
+
+        // Function that duplicates the cards array to create a seamless infinite scroll,
+        // and inserts the HTML into the specified target container
+        const renderCards = (target) => {
+            const doubled = [...cardsData, ...cardsData];
+            doubled.forEach(card => {
+                target.insertAdjacentHTML('beforeend', createCard(card));
+            });
+        };
+
+        // Render cards into both marquee rows
+        renderCards(row1);
+        renderCards(row2);
+    </script>
+
+    <!-- ================= AI CHATBOT WIDGET ================= -->
+    <div id="chat-window" class="chat-window">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar"><i class="fas fa-robot"></i></div>
+                <div>
+                    <div class="chat-title">Procorpia AI Assistant</div>
+                    <div class="chat-status"><span class="status-dot"></span> Online</div>
+                </div>
+            </div>
+            <button class="chat-close" onclick="closeChat()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <!-- Messages will appear here -->
+        </div>
+        <div class="chat-quick-actions">
+            <button
+                onclick="addMessage('Tell me about your services', true); setTimeout(() => addMessage(getBotResponse('services'), false), 800);">
+                <i class="fas fa-list"></i> Services
+            </button>
+            <button
+                onclick="addMessage('I want a demo', true); setTimeout(() => addMessage(getBotResponse('demo'), false), 800);">
+                <i class="fas fa-play"></i> Get Demo
+            </button>
+            <button
+                onclick="addMessage('Contact information', true); setTimeout(() => addMessage(getBotResponse('contact'), false), 800);">
+                <i class="fas fa-phone"></i> Contact
+            </button>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off">
+            <button class="chat-send" onclick="handleUserMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Chat Toggle Button -->
+    <div id="chat-toggle" class="chat-toggle" onclick="toggleChat()">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function subscribeNewsletter(inputId) {
+            const emailInput = document.getElementById(inputId);
+            const email = emailInput ? emailInput.value.trim() : '';
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            alert('Thank you for subscribing! We will keep you updated.');
+            emailInput.value = '';
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Apply Now | Procorpia Enterprise Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="design.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .application-page {
+            padding-top: 120px;
+            padding-bottom: 80px;
+            background: #f8fafc;
+        }
+
+        .form-container-boxed {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-header-premium {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .form-header-premium h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .form-header-premium p {
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+
+        .form-body-premium {
+            padding: 50px;
+        }
+
+        .form-section-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            margin-top: 40px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eff6ff;
+        }
+
+        .form-section-title:first-child {
+            margin-top: 0;
+        }
+
+        .form-section-title i {
+            width: 40px;
+            height: 40px;
+            background: #eff6ff;
+            color: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+
+        .form-section-title h2 {
+            font-size: 1.5rem;
+            color: #0f172a;
+        }
+
+        .input-group-premium {
+            margin-bottom: 25px;
+        }
+
+        .input-group-premium label {
+            display: block;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .input-field-premium {
+            width: 100%;
+            padding: 14px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            background: #f8fafc;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-field-premium:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .textarea-premium {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .file-upload-premium {
+            border: 2px dashed #cbd5e1;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            background: #f8fafc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .file-upload-premium:hover {
+            border-color: var(--primary);
+            background: #eff6ff;
+        }
+
+        .file-upload-premium input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-upload-premium i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .submit-section {
+            margin-top: 50px;
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .btn-submit {
+            padding: 18px 60px;
+            font-size: 1.1rem;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        @media (max-width: 768px) {
+            .form-body-premium {
+                padding: 30px;
+            }
+
+            .form-row-premium {
+                grid-template-columns: 1fr !important;
+            }
+
+            .form-header-premium h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header id="header">
+        <div class="logo"><img src="Images/Procorpia logo.png" alt="Procorpia Logo" class="logo-img"
+                style="max-height: 50px; width: auto;"></div>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="demo.html#home">Home</a></li>
+                <li><a href="demo.html#about">About</a></li>
+                <li><a href="demo.html#services">Services</a></li>
+                <li><a href="demo.html#contact">Contact</a></li>
+                <li><a href="Careers.html">Careers</a></li>
+                <li class="nav-auth-container" id="nav-auth"></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="application-page">
+        <div class="container">
+            <div class="form-container-boxed">
+                <div class="form-header-premium">
+                    <p id="position-label">Join Our Team</p>
+                    <h1 id="job-title-display">Submit Your Application</h1>
+                    <p>Tell us about yourself and your professional journey.</p>
+                </div>
+
+                <div class="form-body-premium">
+                    <form id="premiumApplicationForm">
+                        <!-- Personal Details -->
+                        <div class="form-section-title">
+                            <i class="fas fa-user"></i>
+                            <h2>Personal Information</h2>
+                        </div>
+
+                        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
+                            <div class="input-group-premium">
+                                <label for="first_name">First Name *</label>
+                                <input type="text" id="first_name" class="input-field-premium" placeholder="John"
+                                    required>
+                            </div>
+                            <div class="input-group-premium">
+                                <label for="last_name">Last Name *</label>
+                                <input type="text" id="last_name" class="input-field-premium" placeholder="Doe"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
+                            <div class="input-group-premium">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" class="input-field-premium"
+                                    placeholder="john.doe@example.com" required>
+                            </div>
+                            <div class="input-group-premium">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" class="input-field-premium" placeholder="+1 (555) 000-0000"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="input-group-premium">
+                            <label for="location">Current Location *</label>
+                            <input type="text" id="location" class="input-field-premium" placeholder="City, Country"
+                                required>
+                        </div>
+
+                        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
+                            <div class="input-group-premium">
+                                <label for="linkedin">LinkedIn Profile URL</label>
+                                <input type="url" id="linkedin" class="input-field-premium"
+                                    placeholder="https://linkedin.com/in/username">
+                            </div>
+                            <div class="input-group-premium">
+                                <label for="portfolio">Portfolio / Website</label>
+                                <input type="url" id="portfolio" class="input-field-premium"
+                                    placeholder="https://yourwork.com">
+                            </div>
+                        </div>
+
+                        <!-- Professional Details -->
+                        <div class="form-section-title">
+                            <i class="fas fa-briefcase"></i>
+                            <h2>Professional Details</h2>
+                        </div>
+
+                        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
+                            <div class="input-group-premium">
+                                <label for="experience">Years of Experience *</label>
+                                <select id="experience" class="input-field-premium" required>
+                                    <option value="" disabled selected>Select experience</option>
+                                    <option value="0-1">Fresher (0-1 years)</option>
+                                    <option value="1-3">Junior (1-3 years)</option>
+                                    <option value="3-5">Mid-Level (3-5 years)</option>
+                                    <option value="5-8">Senior (5-8 years)</option>
+                                    <option value="8+">Lead / Manager (8+ years)</option>
+                                </select>
+                            </div>
+                            <div class="input-group-premium">
+                                <label for="notice_period">Notice Period *</label>
+                                <select id="notice_period" class="input-field-premium" required>
+                                    <option value="" disabled selected>Select notice period</option>
+                                    <option value="immediate">Immediate</option>
+                                    <option value="15-days">15 Days</option>
+                                    <option value="1-month">1 Month</option>
+                                    <option value="2-months">2 Months</option>
+                                    <option value="3-months">3 Months</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="input-group-premium">
+                            <label for="skills">Key Skills *</label>
+                            <input type="text" id="skills" class="input-field-premium"
+                                placeholder="e.g. JavaScript, Python, AWS, Project Management" required>
+                        </div>
+
+                        <div class="input-group-premium">
+                            <label>Resume / CV *</label>
+                            <div class="file-upload-premium">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <h3>Upload your resume</h3>
+                                <p>PDF, DOC, DOCX up to 5MB</p>
+                                <input type="file" id="resume_upload" accept=".pdf,.doc,.docx" required>
+                                <div id="file-name-display"
+                                    style="margin-top: 10px; font-weight: 600; color: var(--primary);"></div>
+                            </div>
+                        </div>
+
+                        <div class="input-group-premium">
+                            <label for="cover_letter">Cover Letter (Optional)</label>
+                            <textarea id="cover_letter" class="input-field-premium textarea-premium"
+                                placeholder="Tell us why you're a great fit for this role..."></textarea>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="submit-section">
+                            <div class="checkbox-group" style="justify-content: center; margin-bottom: 25px;">
+                                <input type="checkbox" id="privacy_agree" required>
+                                <label for="privacy_agree"> I agree to the <a href="TermsAndPrivacy.html#terms"
+                                        target="_blank">Terms of Service</a> and <a href="TermsAndPrivacy.html#privacy"
+                                        target="_blank">Privacy Policy</a> *</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-submit">Submit Application <i
+                                    class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="logo"><img src="Images/Procorpia logo.png" alt="Procorpia Logo" class="logo-img"></div>
+                <p>Delivering excellence in enterprise strategy, customer support, and managed operations worldwide
+                    since 2015.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://whatsapp.com/channel/0029Vb712TWJpe8pJx1WlK2y"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="demo.html#about">About Us</a></li>
+                    <li><a href="Careers.html">Careers</a></li>
+                    <li><a href="#">Leadership</a></li>
+                    <li><a href="#">News & Media</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="demo.html#services">Voice Support</a></li>
+                    <li><a href="demo.html#services">IT Helpdesk</a></li>
+                    <li><a href="demo.html#services">Healthcare Operations</a></li>
+                    <li><a href="demo.html#services">Data Processing</a></li>
+                </ul>
+            </div>
+            <div class="footer-col newsletter">
+                <h3>Subscribe</h3>
+                <p>Get the latest enterprise insights directly to your inbox.</p>
+                <form>
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Procorpia Enterprise Solutions. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Pre-populate Job Title from URL
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const jobTitle = urlParams.get('job');
+
+            if (jobTitle) {
+                const decodedTitle = decodeURIComponent(jobTitle.replace(/-/g, ' '));
+                document.getElementById('job-title-display').textContent = decodedTitle;
+                document.getElementById('position-label').textContent = 'Applying for:';
+            }
+
+            // File upload name display
+            const fileInput = document.getElementById('resume_upload');
+            const fileNameDisplay = document.getElementById('file-name-display');
+
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    fileNameDisplay.textContent = 'Selected file: ' + e.target.files[0].name;
+                }
+            });
+
+            // Form submission simulation
+            const form = document.getElementById('premiumApplicationForm');
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+                const formData = new FormData();
+                formData.append('jobTitle', document.getElementById('job-title-display').textContent);
+                formData.append('firstName', document.getElementById('first_name').value);
+                formData.append('lastName', document.getElementById('last_name').value);
+                formData.append('email', document.getElementById('email').value);
+                formData.append('phone', document.getElementById('phone').value);
+                formData.append('location', document.getElementById('location').value);
+                formData.append('linkedin', document.getElementById('linkedin').value);
+                formData.append('portfolio', document.getElementById('portfolio').value);
+                formData.append('experience', document.getElementById('experience').value);
+                formData.append('noticePeriod', document.getElementById('notice_period').value);
+                formData.append('skills', document.getElementById('skills').value);
+                formData.append('resume', document.getElementById('resume_upload').files[0]);
+                formData.append('coverLetter', document.getElementById('cover_letter').value);
+
+                try {
+                    const response = await fetch('http://127.0.0.1:5000/api/applications', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        alert('Success! Your application has been submitted successfully.');
+                        window.location.href = 'Careers.html';
+                    } else {
+                        alert(data.msg || 'Submission failed');
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalText;
+                    }
+                } catch (err) {
+                    console.error('Error:', err);
+                    alert('An error occurred. Please make sure the server is running.');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
