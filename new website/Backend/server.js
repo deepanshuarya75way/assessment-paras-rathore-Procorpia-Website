@@ -32,6 +32,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/uploads', express.static('uploads'));
 
 // MongoDB Connection
+console.log("Connecting to MongoDB...");
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('MongoDB successfully connected to: procorpia_db'))
     .catch(err => {
