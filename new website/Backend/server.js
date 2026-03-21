@@ -32,13 +32,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/uploads', express.static('uploads'));
 
 // MongoDB Connection
-console.log("Connecting to MongoDB...");
+console.log("MONGO_URI:", process.env.MONGO_URI);
+
 mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log('MongoDB successfully connected to: procorpia_db'))
-    .catch(err => {
-        console.error('MongoDB CONNECTION ERROR:', err.message);
-        console.log('TIP: Make sure your MongoDB service is running in MongoDB Compass.');
-    });
+  .then(() => console.log("MongoDB Connected ✅"))
+  .catch(err => {
+    console.error("MongoDB CONNECTION ERROR:", err.message);
+  });
 
 // Multer Disk Storage Configuration
 const storage = multer.diskStorage({
