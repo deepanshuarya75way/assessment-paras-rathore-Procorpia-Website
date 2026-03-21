@@ -21,6 +21,9 @@ const Application = require('./models/Application');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+app.get("/", (req, res) => {
+  res.send("Backend running");
+});
 
 // Middleware
 app.use(cors());
@@ -29,7 +32,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/uploads', express.static('uploads'));
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/procorpia_db')
+mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('MongoDB successfully connected to: procorpia_db'))
     .catch(err => {
         console.error('MongoDB CONNECTION ERROR:', err.message);
@@ -81,7 +84,7 @@ app.post('/api/auth/register', async (req, res) => {
 
         // Create token
         const payload = { user: { id: user.id } };
-        jwt.sign(payload, process.env.JWT_SECRET || 'secret', { expiresIn: 3600 }, (err, token) => {
+        jwt.sign(payload, process.env.JWT_SECRET , { expiresIn: 3600 }, (err, token) => {
             if (err) throw err;
             res.json({ token });
         });
