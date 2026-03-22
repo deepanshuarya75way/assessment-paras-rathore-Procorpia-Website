@@ -17,7 +17,7 @@
         document.getElementById('logoutBtn').addEventListener('click', function () {
             localStorage.removeItem('token');
             localStorage.removeItem('user');
-            window.location.href = 'demo.html';
+            window.location.href = 'index.html';
         });
     } else {
         container.innerHTML =
