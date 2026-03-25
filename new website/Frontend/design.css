@@ -829,13 +829,13 @@ section {
     flex-grow: 1;
 }
 
-.client-date {
+/* .client-date {
     margin-top: 20px;
     font-size: 0.8rem;
     color: var(--text-muted);
     border-top: 1px solid var(--border);
     padding-top: 15px;
-}
+} */
 
 /* ================= CONTACT ================= */
 .contact-container {
