@@ -26,6 +26,32 @@
     }
 })();
 
+// ================= CROSS-PAGE NAVIGATION =================
+// Function to navigate to a specific section on index.html from other pages
+function navigateToSection(event, sectionId) {
+    event.preventDefault();
+    // Store the target section in sessionStorage
+    sessionStorage.setItem('targetSection', sectionId);
+    // Redirect to index.html
+    window.location.href = 'index.html';
+}
+
+// Check for target section on page load and scroll to it
+(function checkTargetSection() {
+    const targetSection = sessionStorage.getItem('targetSection');
+    if (targetSection) {
+        // Clear the stored section
+        sessionStorage.removeItem('targetSection');
+        // Wait for DOM to be ready
+        setTimeout(() => {
+            const element = document.getElementById(targetSection);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 100);
+    }
+})();
+
 // ================= MOBILE MENU =================
 // Select DOM elements for the mobile navigation menu
 const menuToggle = document.getElementById('mobile-menu');
