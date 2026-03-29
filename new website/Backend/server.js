@@ -26,8 +26,19 @@ app.get("/", (req, res) => {
   res.send("Backend running");
 });
 
-// Middleware
-app.use(cors());
+// Middleware - Allow file:// origins (null) and localhost for local development
+app.use(cors({
+    origin: function (origin, callback) {
+        // Allow requests with no origin (null) - this handles file:// protocol
+        // Also allow localhost and 127.0.0.1 on any port
+        if (!origin || origin === 'null' || /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) {
+            callback(null, true);
+        } else {
+            callback(null, true); // Allow all origins for now (can restrict in production)
+        }
+    },
+    credentials: true
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/uploads', express.static('uploads'));
