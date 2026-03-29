@@ -584,6 +584,85 @@ section {
     z-index: 0;
 }
 
+/* ================= VISION & MISSION ================= */
+.vision-mission {
+    background: var(--bg-light);
+}
+
+.vm-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.vm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.vm-card {
+    background: white;
+    padding: 50px 40px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.vm-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.vm-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+}
+
+.vm-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin: 0 auto 24px;
+    transition: var(--transition);
+}
+
+.vm-card:hover .vm-icon {
+    background: var(--primary);
+    color: white;
+    transform: scale(1.1);
+}
+
+.vm-card h3 {
+    font-size: 1.5rem;
+    color: var(--dark);
+    margin-bottom: 18px;
+    font-weight: 700;
+}
+
+.vm-card p {
+    font-size: 1.05rem;
+    color: var(--text-main);
+    line-height: 1.8;
+    font-style: italic;
+}
+
 /* ================= SERVICES ================= */
 .service-container {
     display: grid;
@@ -1489,6 +1568,254 @@ form textarea:focus {
     font-size: 1rem;
 }
 
+/* ================= JOB ACTION BUTTONS ================= */
+.job-action {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.job-action .btn-outline {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.job-action .btn-outline:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+}
+
+/* ================= VIEW REQUIREMENTS BUTTON ================= */
+.btn-requirements {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: var(--font-main);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-requirements:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+}
+
+.btn-requirements i {
+    font-size: 0.85rem;
+}
+
+/* ================= JOB REQUIREMENTS MODAL ================= */
+.requirements-modal-container {
+    background: white;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 720px;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-overlay.active .requirements-modal-container {
+    transform: translateY(0);
+}
+
+.requirements-modal-header {
+    padding: 30px 35px 20px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 5;
+    border-radius: 16px 16px 0 0;
+}
+
+.req-modal-badge {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.req-modal-badge.tech { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+.req-modal-badge.ops { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+.req-modal-badge.support { background: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
+.req-modal-badge.finance { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+.req-modal-badge.ai { background: rgba(37, 99, 235, 0.1); color: #2563eb; }
+.req-modal-badge.hr { background: rgba(236, 72, 153, 0.1); color: #ec4899; }
+
+.requirements-modal-header h3 {
+    font-size: 1.5rem;
+    color: var(--dark);
+    font-weight: 700;
+}
+
+.requirements-modal-body {
+    padding: 25px 35px;
+}
+
+.req-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.req-info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: var(--bg-light);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.req-info-item i {
+    color: var(--primary);
+    font-size: 0.95rem;
+    width: 18px;
+    text-align: center;
+}
+
+.req-section {
+    margin-bottom: 24px;
+}
+
+.req-section h4 {
+    font-size: 1.05rem;
+    color: var(--dark);
+    margin-bottom: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.req-section h4 i {
+    color: var(--primary);
+    font-size: 1rem;
+}
+
+.req-section p {
+    font-size: 0.95rem;
+    color: var(--text-main);
+    line-height: 1.7;
+}
+
+.req-section ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.req-section ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.93rem;
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+.req-section ul li i {
+    color: var(--secondary);
+    font-size: 0.75rem;
+    margin-top: 5px;
+    flex-shrink: 0;
+}
+
+.req-section ul li .fa-angle-right {
+    color: var(--primary);
+}
+
+.req-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.req-skill-tag {
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.req-skill-tag:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.requirements-modal-footer {
+    padding: 20px 35px 25px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    position: sticky;
+    bottom: 0;
+    background: white;
+    border-radius: 0 0 16px 16px;
+}
+
+.requirements-modal-footer .btn {
+    padding: 12px 28px;
+    font-size: 0.95rem;
+}
+
+.requirements-modal-footer .btn-outline {
+    background: transparent;
+    color: var(--text-main);
+    border: 2px solid var(--border);
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: var(--font-main);
+}
+
+.requirements-modal-footer .btn-outline:hover {
+    border-color: var(--dark);
+    color: var(--dark);
+}
+
 /* ---- Click-to-Call Floating Button ---- */
 .call-float-btn {
     position: fixed;
@@ -1652,10 +1979,15 @@ form textarea:focus {
 
     .job-action {
         width: 100%;
+        flex-direction: column;
+        gap: 10px;
     }
 
-    .job-action .btn {
+    .job-action .btn,
+    .job-action .btn-outline,
+    .job-action .btn-requirements {
         width: 100%;
+        justify-content: center;
     }
 }
 
@@ -2242,6 +2574,309 @@ footer {
     transform: translate(0, 0) !important;
 }
 
+/* ================= REQUIREMENTS PAGE ================= */
+.req-page-hero {
+    padding: 140px 8% 60px;
+    background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+    color: white;
+}
+
+.req-page-hero-inner {
+    max-width: 900px;
+}
+
+.req-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #93c5fd;
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    transition: var(--transition);
+}
+
+.req-back-link:hover {
+    color: white;
+    transform: translateX(-4px);
+}
+
+.req-page-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.req-page-badge.tech { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+.req-page-badge.ops { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; }
+.req-page-badge.support { background: rgba(139, 92, 246, 0.2); color: #c4b5fd; }
+.req-page-badge.finance { background: rgba(245, 158, 11, 0.2); color: #fcd34d; }
+.req-page-badge.ai { background: rgba(37, 99, 235, 0.2); color: #93c5fd; }
+.req-page-badge.hr { background: rgba(236, 72, 153, 0.2); color: #f9a8d4; }
+
+.req-page-hero h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.req-page-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.req-page-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #e2e8f0;
+    backdrop-filter: blur(6px);
+}
+
+.req-page-meta span i {
+    color: #60a5fa;
+    font-size: 0.85rem;
+}
+
+.req-page-body {
+    padding: 60px 8% 100px;
+    background: var(--bg-light);
+}
+
+.req-page-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.req-page-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 40px;
+    align-items: start;
+}
+
+.req-page-main {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+}
+
+.req-page-section {
+    margin-bottom: 36px;
+}
+
+.req-page-section:last-child {
+    margin-bottom: 0;
+}
+
+.req-page-section h2 {
+    font-size: 1.3rem;
+    color: var(--dark);
+    margin-bottom: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--primary-light);
+}
+
+.req-page-section h2 i {
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.req-page-section p {
+    font-size: 1.05rem;
+    color: var(--text-main);
+    line-height: 1.8;
+}
+
+.req-page-section ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.req-page-section ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.98rem;
+    color: var(--text-main);
+    line-height: 1.6;
+    padding: 12px 16px;
+    background: var(--bg-light);
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+.req-page-section ul li:hover {
+    background: var(--primary-light);
+}
+
+.req-page-section ul li i {
+    color: var(--secondary);
+    font-size: 0.8rem;
+    margin-top: 5px;
+    flex-shrink: 0;
+}
+
+.req-page-section ul li .fa-angle-right {
+    color: var(--primary);
+}
+
+.req-page-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.req-page-skill-tag {
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.req-page-skill-tag:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Sidebar */
+.req-page-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.req-sidebar-card {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 28px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+}
+
+.req-sidebar-card h3 {
+    font-size: 1.1rem;
+    color: var(--dark);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.req-sidebar-card p {
+    font-size: 0.93rem;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+    line-height: 1.5;
+}
+
+.btn-outline-req {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-outline-req:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.req-share-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.req-share-buttons a {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-main);
+    font-size: 1.1rem;
+    transition: var(--transition);
+    border: 1px solid var(--border);
+}
+
+.req-share-buttons a:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    transform: translateY(-3px);
+}
+
+@media (max-width: 900px) {
+    .req-page-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .req-page-hero h1 {
+        font-size: 2rem;
+    }
+
+    .req-page-meta {
+        gap: 10px;
+    }
+
+    .req-page-meta span {
+        font-size: 0.82rem;
+        padding: 6px 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    .req-page-hero {
+        padding: 120px 5% 40px;
+    }
+
+    .req-page-body {
+        padding: 40px 5% 60px;
+    }
+
+    .req-page-main {
+        padding: 24px;
+    }
+
+    .req-page-hero h1 {
+        font-size: 1.6rem;
+    }
+}
+
 /* ================= RESPONSIVE ================= */
 @media (max-width: 1024px) {
     .hero-content h1 {
@@ -2249,6 +2884,10 @@ footer {
     }
 
     .about-container {
+        grid-template-columns: 1fr;
+    }
+
+    .vm-grid {
         grid-template-columns: 1fr;
     }
 
@@ -2864,5 +3503,28 @@ footer {
     .modal-header,
     .job-application-form {
         padding: 20px;
+    }
+
+    .requirements-modal-container {
+        width: 95%;
+    }
+
+    .requirements-modal-header,
+    .requirements-modal-body {
+        padding: 20px;
+    }
+
+    .requirements-modal-footer {
+        padding: 15px 20px 20px;
+        flex-direction: column;
+    }
+
+    .requirements-modal-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .req-info-grid {
+        grid-template-columns: 1fr;
     }
 }

@@ -195,8 +195,8 @@ function closeJobModal() {
     }
 }
 
-// Add click handlers to all Apply Now buttons
-document.querySelectorAll('.job-action .btn').forEach(function (button) {
+// Add click handlers to Apply Now buttons only (not View Requirements)
+document.querySelectorAll('.job-action .btn-outline').forEach(function (button) {
     button.addEventListener('click', function (e) {
         e.preventDefault();
         const jobItem = this.closest('.job-list-item');
