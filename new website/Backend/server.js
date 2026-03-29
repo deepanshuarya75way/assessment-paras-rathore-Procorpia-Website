@@ -22,6 +22,8 @@ const Application = require('./models/Application');
 const Contact = require('./models/Contact');
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`✅ Server is running on port ${PORT}`);
@@ -174,47 +176,50 @@ app.post('/api/applications', upload.single('resume'), async (req, res) => {
 
 // Contact Form Route (Get In Touch)
 // Contact Form Route (Get In Touch)
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
+// Contact Form Route - Replace your old one with this
 app.post('/api/contact', async (req, res) => {
-    console.log("=== NEW CONTACT FORM SUBMISSION RECEIVED ===");
-    console.log("Request Body:", JSON.stringify(req.body, null, 2));   // ← Very important
+    console.log("=== CONTACT FORM SUBMITTED ===");
+    console.log("Full Request Body Received:", JSON.stringify(req.body, null, 2));
 
     try {
         const { name, email, company, phone, service, subject, message } = req.body;
 
-        // Better validation
+        // Validation
         if (!email || !message) {
-            console.log("VALIDATION FAILED: Email or message missing");
+            console.log("❌ VALIDATION FAILED: Email or message is missing");
             return res.status(400).json({ 
                 success: false, 
                 msg: 'Email and message are required.' 
             });
         }
 
-        // Create new document
+        console.log("✅ Validation passed. Creating document...");
+
         const newContact = new Contact({
             name: name || "Anonymous",
-            email,
+            email: email,
             company: company || "",
             phone: phone || "",
             service: service || "",
             subject: subject || "",
-            message
+            message: message
         });
 
         const savedContact = await newContact.save();
 
-        console.log("SUCCESS: Document saved to MongoDB with ID:", savedContact._id);
+        console.log("✅ SUCCESS: Message saved in MongoDB! ID =", savedContact._id);
 
+        // Send success response
         res.json({ 
             success: true,
             msg: 'Your message has been submitted successfully!' 
         });
 
     } catch (err) {
-        console.error("ERROR saving contact:", err.message);
-        console.error("Full Error Stack:", err.stack);   // ← This helps a lot in Render logs
+        console.error("❌ ERROR in /api/contact route:");
+        console.error("Error Message:", err.message);
+        console.error("Full Error:", err);
 
         res.status(500).json({ 
             success: false, 
