@@ -201,12 +201,13 @@ app.post('/api/contact', async (req, res) => {
             email: email,
             company: company || "",
             phone: phone || "",
+
             service: service || "",
             subject: subject || "",
             message: message
         });
 
-        const savedContact = await newContact.save();
+        const savedContact = await newContact.save();   
 
         console.log("✅ SUCCESS: Message saved in MongoDB! ID =", savedContact._id);
 
