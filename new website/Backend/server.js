@@ -1,5 +1,4 @@
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
@@ -171,6 +170,8 @@ app.post('/api/applications', upload.single('resume'), async (req, res) => {
 
 // Contact Form Route (Get In Touch)
 // Contact Form Route (Get In Touch)
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.post('/api/contact', async (req, res) => {
     console.log("=== NEW CONTACT FORM SUBMISSION RECEIVED ===");
     console.log("Request Body:", JSON.stringify(req.body, null, 2));   // ← Very important
