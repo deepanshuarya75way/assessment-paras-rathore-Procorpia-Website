@@ -684,10 +684,8 @@
         }
     </script>
     <script>
-        // When opened as a file:// URL, hostname is empty — always use localhost:5000 for local dev
-        const API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname === '')
-            ? 'http://localhost:5000'
-            : '';
+        // Always use localhost:5000 for local development
+        const API_BASE = 'http://localhost:5000';
 
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
