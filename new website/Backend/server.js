@@ -18,6 +18,7 @@ if (!fs.existsSync(uploadDir)) {
 // Models
 const User = require('./models/User');
 const Application = require('./models/Application');
+const Contact = require('./models/Contact');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -147,6 +148,33 @@ app.post('/api/applications', upload.single('resume'), async (req, res) => {
 
         await newApplication.save();
         res.json({ msg: 'Application submitted successfully!' });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+});
+
+// Contact Form Route (Get In Touch)
+app.post('/api/contact', async (req, res) => {
+    try {
+        const { name, email, company, phone, service, subject, message } = req.body;
+
+        if (!name || !email || !message) {
+            return res.status(400).json({ msg: 'Name, email, and message are required.' });
+        }
+
+        const newContact = new Contact({
+            name,
+            email,
+            company,
+            phone,
+            service,
+            subject,
+            message
+        });
+
+        await newContact.save();
+        res.json({ msg: 'Your message has been submitted successfully!' });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server error');
