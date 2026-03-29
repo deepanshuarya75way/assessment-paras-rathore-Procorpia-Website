@@ -1,3 +1,5 @@
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
@@ -51,6 +53,8 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => {
     console.error("MongoDB CONNECTION ERROR:", err.message);
   });
+  mongoose.connection.on('connected', () => console.log('Mongoose connected to DB'));
+mongoose.connection.on('error', (err) => console.error('Mongoose connection error:', err));
 
 // Multer Disk Storage Configuration
 const storage = multer.diskStorage({
@@ -166,30 +170,50 @@ app.post('/api/applications', upload.single('resume'), async (req, res) => {
 });
 
 // Contact Form Route (Get In Touch)
+// Contact Form Route (Get In Touch)
 app.post('/api/contact', async (req, res) => {
+    console.log("=== NEW CONTACT FORM SUBMISSION RECEIVED ===");
+    console.log("Request Body:", JSON.stringify(req.body, null, 2));   // ← Very important
+
     try {
         const { name, email, company, phone, service, subject, message } = req.body;
 
-        if (!name || !email || !message) {
-            return res.status(400).json({ msg: 'Name, email, and message are required.' });
+        // Better validation
+        if (!email || !message) {
+            console.log("VALIDATION FAILED: Email or message missing");
+            return res.status(400).json({ 
+                success: false, 
+                msg: 'Email and message are required.' 
+            });
         }
 
+        // Create new document
         const newContact = new Contact({
-            name,
+            name: name || "Anonymous",
             email,
-            company,
-            phone,
-            service,
-            subject,
+            company: company || "",
+            phone: phone || "",
+            service: service || "",
+            subject: subject || "",
             message
         });
 
-        await newContact.save();
-        res.json({ msg: 'Your message has been submitted successfully!' });
+        const savedContact = await newContact.save();
+
+        console.log("SUCCESS: Document saved to MongoDB with ID:", savedContact._id);
+
+        res.json({ 
+            success: true,
+            msg: 'Your message has been submitted successfully!' 
+        });
+
     } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server error');
+        console.error("ERROR saving contact:", err.message);
+        console.error("Full Error Stack:", err.stack);   // ← This helps a lot in Render logs
+
+        res.status(500).json({ 
+            success: false, 
+            msg: 'Server error. Please try again later.' 
+        });
     }
 });
-
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
