@@ -13,3 +13,4 @@ uploads/
 # Editor & cache files
 .kilo/
 .DS_Store
+!**/.env.example
