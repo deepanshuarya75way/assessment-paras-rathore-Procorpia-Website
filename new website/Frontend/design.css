@@ -1219,6 +1219,7 @@ form textarea:focus {
     align-items: center;
     justify-content: center;
     margin-right: 20px;
+    flex-shrink: 0;
 }
 
 .job-icon i {
@@ -1931,10 +1932,16 @@ form textarea:focus {
     color: #f59e0b;
 }
 
+.job-info {
+    flex: 1;
+    text-align: left;
+}
+
 .job-info h3 {
     font-size: 1.4rem;
     color: var(--dark);
     margin-bottom: 10px;
+    text-align: left;
 }
 
 .job-meta {
@@ -1942,6 +1949,7 @@ form textarea:focus {
     gap: 20px;
     color: var(--text);
     font-size: 0.95rem;
+    text-align: left;
 }
 
 .job-meta span {

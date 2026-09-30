@@ -24,28 +24,28 @@ const Contact = require('./models/Contact');
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-const PORT = process.env.PORT || 10000;
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`✅ Server is running on port ${PORT}`);
-    console.log(`🌍 Environment: ${process.env.NODE_ENV || 'production'}`);
+
+app.get('/test', (req, res) => {
+    res.json({
+        message: "Backend is working on Hostinger!",
+        status: "success",
+        time: new Date().toISOString()
+    });
 });
 app.get("/", (req, res) => {
-  res.send("Backend running");
+    res.send("Backend running");
 });
 
-// Middleware - Allow file:// origins (null) and localhost for local development
 app.use(cors({
-    origin: function (origin, callback) {
-        // Allow requests with no origin (null) - this handles file:// protocol
-        // Also allow localhost and 127.0.0.1 on any port
-        if (!origin || origin === 'null' || /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) {
-            callback(null, true);
-        } else {
-            callback(null, true); // Allow all origins for now (can restrict in production)
-        }
-    },
+    origin: ['https://procorpia.com', 'https://www.procorpia.com', 'http://procorpia.com', 'http://www.procorpia.com'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true
 }));
+
+// This line is important for preflight requests
+
+// Middleware - Allow file:// origins (null) and localhost for local development
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/uploads', express.static('uploads'));
@@ -54,11 +54,11 @@ app.use('/uploads', express.static('uploads'));
 console.log("MONGO_URI:", process.env.MONGO_URI);
 
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB Connected ✅"))
-  .catch(err => {
-    console.error("MongoDB CONNECTION ERROR:", err.message);
-  });
-  mongoose.connection.on('connected', () => console.log('Mongoose connected to DB'));
+    .then(() => console.log("MongoDB Connected ✅"))
+    .catch(err => {
+        console.error("MongoDB CONNECTION ERROR:", err.message);
+    });
+mongoose.connection.on('connected', () => console.log('Mongoose connected to DB'));
 mongoose.connection.on('error', (err) => console.error('Mongoose connection error:', err));
 
 // Multer Disk Storage Configuration
@@ -106,7 +106,7 @@ app.post('/api/auth/register', async (req, res) => {
 
         // Create token
         const payload = { user: { id: user.id } };
-        jwt.sign(payload, process.env.JWT_SECRET , { expiresIn: 3600 }, (err, token) => {
+        jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 3600 }, (err, token) => {
             if (err) throw err;
             res.json({ token });
         });
@@ -188,9 +188,9 @@ app.post('/api/contact', async (req, res) => {
         // Validation
         if (!email || !message) {
             console.log("❌ VALIDATION FAILED: Email or message is missing");
-            return res.status(400).json({ 
-                success: false, 
-                msg: 'Email and message are required.' 
+            return res.status(400).json({
+                success: false,
+                msg: 'Email and message are required.'
             });
         }
 
@@ -207,14 +207,14 @@ app.post('/api/contact', async (req, res) => {
             message: message
         });
 
-        const savedContact = await newContact.save();   
+        const savedContact = await newContact.save();
 
         console.log("✅ SUCCESS: Message saved in MongoDB! ID =", savedContact._id);
 
         // Send success response
-        res.json({ 
+        res.json({
             success: true,
-            msg: 'Your message has been submitted successfully!' 
+            msg: 'Your message has been submitted successfully!'
         });
 
     } catch (err) {
@@ -222,9 +222,14 @@ app.post('/api/contact', async (req, res) => {
         console.error("Error Message:", err.message);
         console.error("Full Error:", err);
 
-        res.status(500).json({ 
-            success: false, 
-            msg: 'Server error. Please try again later.' 
+        res.status(500).json({
+            success: false,
+            msg: 'Server error. Please try again later.'
         });
     }
+});
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`✅ Server is running on port ${PORT}`);
+    console.log(`🌍 Environment: ${process.env.NODE_ENV || 'production'}`);
 });
