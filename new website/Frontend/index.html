@@ -759,6 +759,33 @@
         }
     </script>
 
+    <script>
+
+        function startSessionChecker(){
+            const token = localStorage.getItem('token');
+            if(!token) return;
+
+            setInterval(async ()=>{
+                try{
+                    const res = await fetch('http://localhost:5000/api/auth/verify-session',{
+                        headers: { 'Authorization': 'Bearer' + localStorage.getItem('token')}
+                    });
+                    const data = await res.json();
+                    if(!res.ok && data.sessionInvalid){
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('user');
+                        alert('Your session was ended because you logged in another device.');
+                        window.location.href = 'Login.html?reason=session_terminated';
+                    }
+                }
+                catch(err){
+                    console.error('Session check failed:',err);
+                }
+            },1000);
+        }
+        startSessionChecker();
+    </script>
+
 </body>
 
 </html>

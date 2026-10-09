@@ -24,6 +24,18 @@ const userSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
+    },
+    activeSessionToken:{
+        type: String,
+        default: null
+    },
+    activeDevicename:{
+        type: String,
+        default: null
+    },
+    laastLoginAt:{
+        type: Date,
+        default:null
     }
 });
 

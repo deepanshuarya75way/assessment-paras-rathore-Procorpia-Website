@@ -59,6 +59,19 @@
         <div class="auth-form-container">
             <div class="auth-form-box">
                 <h2>Log In</h2>
+                <div id = "sessionwarning" style="display:none; background-color: #fef2ff; border: 1px solid #ef4444; color: #b91c1c">
+                    <i class= "fas fa-exxclamation-triangle"></i>
+                    <strong>Session Expired </strong> You have been Logged Out from this Account
+                </div>
+                <script>
+
+                    const urlParams = new URLSearchParams(window.location.search);
+                    if(urlParams.get('reason')== 'session_terminated'){
+                        const warning = document.getElementById('sessionWarning');
+                        if(warning)warning.style.display = 'block';
+                        alert("Your session was ended");
+                    }
+                </script>
                 <p class="auth-subtitle">Welcome back! Please enter your details.</p>
 
                 <form id="loginForm">
@@ -94,6 +107,8 @@
                         e.preventDefault();
                         const email = document.getElementById('email').value;
                         const password = document.getElementById('password').value;
+                        const deviceName = navigator.userAgent.includes('Mobile')?'Mobile Device':
+                        navigator.userAgent.includes('Tablets')? 'Tablet' : 'Desktop/Laptop';
 
                         try {
                             const response = await fetch('http://localhost:5000/api/auth/login', {
@@ -101,7 +116,7 @@
                                 headers: {
                                     'Content-Type': 'application/json'
                                 },
-                                body: JSON.stringify({ email, password })
+                                body: JSON.stringify({ email, password,deviceName })
                             });
 
                             const data = await response.json();
@@ -110,8 +125,13 @@
                                 // Store token and user info
                                 localStorage.setItem('token', data.token);
                                 localStorage.setItem('user', JSON.stringify(data.user));
-
-                                alert('Login successful!');
+                                if(data.sessionTakeover && data.sessionTakeover.previousDevice){
+                                    alert('Session takeover: You signed out from"'+
+                                        data.sessionTakeover.previousDevice+'"');
+                                }
+                                else{
+                                    alert('Login sucessful');
+                                }
                                 window.location.href = 'index.html';
                             } else {
                                 alert(data.msg || 'Login failed');

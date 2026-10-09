@@ -86,6 +86,33 @@ const upload = multer({
     }
 });
 
+const verifyActiveSession = async (req,res,next) =>{
+    const token = req.header('Authorization')?.replace('Bearer','');
+    if(!token){
+        return res.status(401).json({msg: 'No Token'});
+    }
+    try{
+        const decoded = jwt.verify(token,process.env.JWT_SECRET || 'secret');
+        const user = await User.findById(decoded.user.id);
+
+        if(!user || user.activeSessionToken !== token){
+            return res.status(401).json({
+                msg: 'Session expired you have been logged in other',
+                sessionInvalid: true
+            });
+        }
+        req.user = decoded.user;
+        next();
+
+    }
+    catch(err){
+        return res.status(401).json({msg: 'Token is not valid',sessionInvalid: true});
+    }
+};
+app.get('/api/auth/verify-session', verifyActiveSession,(req,res)=>{
+    res.json({valid:true});
+});
+
 // Authentication Routes
 app.post('/api/auth/register', async (req, res) => {
     try {
@@ -118,7 +145,7 @@ app.post('/api/auth/register', async (req, res) => {
 
 app.post('/api/auth/login', async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const { email, password, deviceName } = req.body;
 
         let user = await User.findOne({ email });
         if (!user) {
@@ -129,11 +156,23 @@ app.post('/api/auth/login', async (req, res) => {
         if (!isMatch) {
             return res.status(400).json({ msg: 'Invalid credentials' });
         }
+        const previousDeviceName = user.activeDeviceName || null;
+        const hadActiveSession = !!user.activeSessionToken;
+
 
         const payload = { user: { id: user.id } };
-        jwt.sign(payload, process.env.JWT_SECRET || 'secret', { expiresIn: 3600 }, (err, token) => {
-            if (err) throw err;
-            res.json({ token, user: { fullName: user.fullName, email: user.email } });
+        const token = jwt.sign(payload,process.env.JWT_SECRET || 'secret',{expiresIn: 3600});
+
+        user.activeSessionToken = token;
+        user.activeDevicename = deviceName || 'unknown Device';
+        user.lastLoginAt = new Date();
+        await user.save();
+        res.json({
+            token,
+            user: {fullName: user.fullName,email: user.email},
+            sessionTokeover: hadActiveSession ?{
+                previousDevice: previousDeviceName
+            } : null
         });
     } catch (err) {
         console.error(err.message);
