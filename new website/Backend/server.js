@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(cors({
-    origin: ['https://procorpia.com', 'https://www.procorpia.com', 'http://procorpia.com', 'http://www.procorpia.com'],
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true
 }));
