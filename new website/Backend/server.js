@@ -156,7 +156,7 @@ app.post('/api/auth/login', async (req, res) => {
         if (!isMatch) {
             return res.status(400).json({ msg: 'Invalid credentials' });
         }
-        const previousDeviceName = user.activeDeviceName || null;
+        const previousDeviceName = user.activeDeviceName || 'Desktop/ laptop';
         const hadActiveSession = !!user.activeSessionToken;
 
 
@@ -164,7 +164,7 @@ app.post('/api/auth/login', async (req, res) => {
         const token = jwt.sign(payload,process.env.JWT_SECRET || 'secret',{expiresIn: 3600});
 
         user.activeSessionToken = token;
-        user.activeDevicename = deviceName || 'unknown Device';
+        user.activeDeviceName = deviceName || 'laptop/ Desktop';
         user.lastLoginAt = new Date();
         await user.save();
         res.json({

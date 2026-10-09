@@ -16,11 +16,12 @@
     <!-- Link to the main external stylesheet -->
     <link rel="stylesheet" href="design.css">
 
-    <!-- Ensures proper rendering and touch zooming on mobile devices -->
+    <!-- Ensures<div id= 'takeoverBanner' style="display: none; background: #eff6ff;border-bottom: 2px solid #3b82f6; color: #1e40af; padding: 12px 24pox;" </div> proper rendering and touch zooming on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
+
 
     <!-- ================= HEADER ================= -->
     <header id="main-header">
@@ -758,8 +759,27 @@
             });
         }
     </script>
+<div id= 'takeoverBanner' style="display: none; background: #eff6ff;border-bottom: 2px solid #3b82f6; color: #1e40af;
+ padding: 12px 24px; text-align: center; font-size: 16px; font-weight: 600; position: fixed; top:0;left: 0; right: 0; z-index: 99999; box-shadow: 0 4px 6px rgb(0,0,0,0.15);">
+ <i class="fas fa-info-circle" style="margin-right: 8px;"></i>
+ <span id = "takeoverBannerText"></span>
+ <button onclick="document.getElementById(takeoverBanner).style.display='none'"
+  style="margin-left: 15px; background: none; border: none; font-size: 16px; cursor: pointer; color: #1e40af;">&times;</button>
+
+ </div>
 
     <script>
+        const takeoverMsg = localStorage.getItem('takeoverMessage');
+        if(takeoverMsg){
+            const banner = document.getElementById('takeoverBanner');
+            const bannerText = document.getElementById('takeoverBannerText');
+            if(banner && bannerText){
+                bannerText.innerText = takeoverMsg;
+                banner.style.display = 'block';
+            }
+            localStorage.removeItem('takeoverMessage');
+            
+        }
 
         function startSessionChecker(){
             const token = localStorage.getItem('token');
@@ -774,14 +794,14 @@
                     if(!res.ok && data.sessionInvalid){
                         localStorage.removeItem('token');
                         localStorage.removeItem('user');
-                        alert('Your session was ended because you logged in another device.');
+                        alert('session expired: You logged in from another device')
                         window.location.href = 'Login.html?reason=session_terminated';
                     }
                 }
                 catch(err){
                     console.error('Session check failed:',err);
                 }
-            },1000);
+            },3000);
         }
         startSessionChecker();
     </script>

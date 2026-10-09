@@ -59,8 +59,8 @@
         <div class="auth-form-container">
             <div class="auth-form-box">
                 <h2>Log In</h2>
-                <div id = "sessionwarning" style="display:none; background-color: #fef2ff; border: 1px solid #ef4444; color: #b91c1c">
-                    <i class= "fas fa-exxclamation-triangle"></i>
+                <div id = "sessionwarning" style="display:none; background-color: #fef2ff; border: 1px solid #ef4444; color: #991c1c; padding: 12px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 14px; font-weight: 500; ">
+                    <i class= "fas fa-exclamation-circle" style="margin-right: 6px;"></i>
                     <strong>Session Expired </strong> You have been Logged Out from this Account
                 </div>
                 <script>
@@ -126,8 +126,10 @@
                                 localStorage.setItem('token', data.token);
                                 localStorage.setItem('user', JSON.stringify(data.user));
                                 if(data.sessionTakeover && data.sessionTakeover.previousDevice){
-                                    alert('Session takeover: You signed out from"'+
-                                        data.sessionTakeover.previousDevice+'"');
+
+                                    alert('Session Takeover', 'you took over the previous device signed out:'+data.sessionTakeover.previousDevice);
+
+
                                 }
                                 else{
                                     alert('Login sucessful');
